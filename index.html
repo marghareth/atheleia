@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atheleia - Digital Marketing Agency</title>
+    <title>Megg - Digital Marketing Agency</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo">A<span style="font-weight: 500;">theleia</span></div>
+            <div class="logo">M<span style="font-weight: 500;">egg</span></div>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#results">Results</a></li>
@@ -48,14 +48,14 @@
             </p>
             <div class="hero-clients">
                 <div class="client-avatars">
-                    <img src="assets/avatar1.svg" alt="Client">
-                    <img src="assets/avatar2.svg" alt="Client">
-                    <img src="assets/avatar3.svg" alt="Client">
+                    <img src="https://placehold.co/32x32" alt="Client">
+                    <img src="https://placehold.co/32x32" alt="Client">
+                    <img src="https://placehold.co/32x32" alt="Client">
                 </div>
                 <span class="clients-count">80+ happy clients</span>
             </div>
             <div class="hero-buttons">
-                <button class="btn-primary">Get in touch</button>
+                <button class="btn-primary">Book a free call</button>
                 <button class="btn-secondary">See our work</button>
             </div>
         </div>
@@ -65,11 +65,11 @@
     <section class="trusted-by">
         <p class="trusted-label">TRUSTED BY COMPANIES</p>
         <div class="company-logos">
-            <img src="assets/logo1.svg" alt="Company">
-            <img src="assets/logo2.svg" alt="Company">
-            <img src="assets/logo3.svg" alt="Company">
-            <img src="assets/logo4.svg" alt="Company">
-            <img src="assets/logo5.svg" alt="Company">
+            <img src="https://placehold.co/120x40?text=unfold" alt="Company">
+            <img src="https://placehold.co/120x40?text=unfold" alt="Company">
+            <img src="https://placehold.co/120x40?text=unfold" alt="Company">
+            <img src="https://placehold.co/120x40?text=unfold" alt="Company">
+            <img src="https://placehold.co/120x40?text=unfold" alt="Company">
         </div>
     </section>
 
@@ -120,7 +120,7 @@
         
         <div class="results-carousel">
             <div class="result-card">
-                <img src="assets/img1.svg" alt="Project">
+                <img src="https://placehold.co/355x255" alt="Project">
                 <div class="result-tags">
                     <span class="tag">Sales increase by 47%</span>
                     <span class="tag">2x Website visits</span>
@@ -132,7 +132,7 @@
                 </div>
             </div>
             <div class="result-card">
-                <img src="assets/img2.svg" alt="Project">
+                <img src="https://placehold.co/355x255" alt="Project">
                 <div class="result-tags">
                     <span class="tag">SEO Search by 62%</span>
                     <span class="tag">2x Revenue from Ads</span>
@@ -144,7 +144,7 @@
                 </div>
             </div>
             <div class="result-card">
-                <img src="assets/img3.svg" alt="Project">
+                <img src="https://placehold.co/355x255" alt="Project">
                 <div class="result-tags">
                     <span class="tag">SEO Search by 80%</span>
                     <span class="tag">3x Revenue from Ads</span>
@@ -189,11 +189,56 @@
         </div>
     </section>
 
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+        <div class="contact-form-container">
+            <h2>Get In Touch</h2>
+            <p>Ready to transform your business? Fill out the form below and we'll get back to you within 24 hours.</p>
+            
+            <form class="contact-form" id="contactForm" action="YOUR_N8N_WEBHOOK_URL_HERE" method="POST">
+                <div class="form-group">
+                    <label for="fullName">Full Name <span class="required">*</span></label>
+                    <input 
+                        type="text" 
+                        id="fullName" 
+                        name="name" 
+                        placeholder="John Doe" 
+                        required
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address <span class="required">*</span></label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="john@example.com" 
+                        required
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Message <span class="required">*</span></label>
+                    <textarea 
+                        id="message" 
+                        name="message" 
+                        placeholder="Tell us about your project and goals..." 
+                        required
+                    ></textarea>
+                    <small>Please fill out this field.</small>
+                </div>
+                
+                <button type="submit" class="btn-submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-left">
-                <div class="footer-logo">Atheleia</div>
+                <div class="footer-logo">Megg</div>
                 <div class="newsletter">
                     <h3>Join our newsletter</h3>
                     <p>Sign up to our mailing list below and be the first to know about new updates. Don't worry, we hate spam too.</p>
@@ -225,5 +270,103 @@
             </div>
         </div>
     </footer>
+
+    <!-- Floating Chat Widget -->
+    <div class="chat-widget">
+        <!-- Chat Button -->
+        <button class="chat-button" id="chatButton" aria-label="Open chat">
+            <svg class="chat-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+            <span class="chat-notification">1</span>
+        </button>
+
+        <!-- Chat Window -->
+        <div class="chat-window" id="chatWindow">
+            <!-- Chat Header -->
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div class="chat-avatar">
+                        <div class="avatar-circle">A</div>
+                        <span class="status-dot"></span>
+                    </div>
+                    <div class="chat-header-text">
+                        <h3>Atheleia</h3>
+                        <p class="chat-status">
+                            <span class="status-indicator"></span>
+                            AI Assistant - Online
+                        </p>
+                    </div>
+                </div>
+                <button class="minimize-btn" id="minimizeChat" aria-label="Minimize chat">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Chat Messages -->
+            <div class="chat-messages" id="chatMessages">
+                <div class="welcome-message">
+                    <div class="welcome-avatar">
+                        <div class="avatar-circle">A</div>
+                    </div>
+                    <div class="welcome-text">
+                        <h4>Welcome to Atheleia! 👋</h4>
+                        <p>Hi! I'm your AI assistant. How can I help you today?</p>
+                        <div class="quick-questions">
+                            <button class="quick-question-btn" data-question="What services do you offer?">
+                                What services do you offer?
+                            </button>
+                            <button class="quick-question-btn" data-question="How can I get started?">
+                                How can I get started?
+                            </button>
+                            <button class="quick-question-btn" data-question="What are your pricing options?">
+                                What are your pricing options?
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Typing Indicator -->
+            <div class="typing-indicator" id="typingIndicator" style="display: none;">
+                <div class="typing-avatar">
+                    <div class="avatar-circle-small">A</div>
+                </div>
+                <div class="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+            <!-- Chat Input -->
+            <div class="chat-input-container">
+                <form class="chat-input-form" id="chatForm">
+                    <input 
+                        type="text" 
+                        class="chat-input" 
+                        id="chatInput" 
+                        placeholder="Type your message..."
+                        autocomplete="off"
+                    >
+                    <button type="submit" class="chat-send-btn" aria-label="Send message">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </form>
+                <p class="chat-disclaimer">Powered by AI • Responses may vary</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
