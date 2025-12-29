@@ -12,15 +12,17 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar Background on Scroll
+// Navbar Glassmorphism Enhancement on Scroll
 const nav = document.querySelector('nav');
+const navContainer = document.querySelector('.nav-container');
+
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
-        nav.style.background = 'rgba(254, 250, 224, 0.95)';
-        nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        navContainer.style.background = 'rgba(254, 250, 224, 0.85)';
+        navContainer.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.12)';
     } else {
-        nav.style.background = 'rgba(254, 250, 224, 0.9)';
-        nav.style.boxShadow = 'none';
+        navContainer.style.background = 'rgba(254, 250, 224, 0.7)';
+        navContainer.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.08)';
     }
 });
 
@@ -32,7 +34,7 @@ const originalButtonText = submitButton.textContent;
 // Form Validation
 function validateEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.validateEmail;
+    return re.test(email);
 }
 
 function validateForm() {
@@ -355,7 +357,7 @@ const chatNotification = document.querySelector('.chat-notification');
 const minimizeChat = document.getElementById('minimizeChat');
 
 // Chat Widget Configuration
-const CHAT_WEBHOOK_URL = 'YOUR_N8N_CHAT_WEBHOOK_URL_HERE'; // Replace with your n8n chat webhook
+const CHAT_WEBHOOK_URL = 'https://atheleia.app.n8n.cloud/webhook-test/chat'; // Replace with your n8n chat webhook
 
 // Atheleia Business Knowledge (for reference)
 const atheileiaKnowledge = {
