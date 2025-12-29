@@ -1,3 +1,5 @@
+<!--api keys: html: https://atheleia.app.n8n.cloud/webhook/contact-form-->
+<!--api key: js: https://atheleia.app.n8n.cloud/webhook/chat-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,15 +23,11 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo">M<span style="font-weight: 500;">egg</span></div>
+            <div class="logo">Atheleia</div>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#results">Results</a></li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#team">Team</a></li>
-                <li class="dropdown">
-                    <a href="#pages">Pages ▾</a>
-                </li>
             </ul>
             <button class="btn-primary">Get in touch</button>
         </div>
@@ -195,7 +193,7 @@
             <h2>Get In Touch</h2>
             <p>Ready to transform your business? Fill out the form below and we'll get back to you within 24 hours.</p>
             
-            <form class="contact-form" id="contactForm" action="https://atheleia.app.n8n.cloud/webhook-test/contact-form" method="POST">
+            <form class="contact-form" id="contactForm" action="YOUR_N8N_WEBHOOK_URL_HERE" method="POST">
                 <div class="form-group">
                     <label for="fullName">Full Name <span class="required">*</span></label>
                     <input 
@@ -238,7 +236,7 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-left">
-                <div class="footer-logo">Megg</div>
+                <div class="footer-logo">Atheleia</div>
                 <div class="newsletter">
                     <h3>Join our newsletter</h3>
                     <p>Sign up to our mailing list below and be the first to know about new updates. Don't worry, we hate spam too.</p>
@@ -253,23 +251,124 @@
                     <h4>Pages</h4>
                     <ul>
                         <li><a href="#about">About</a></li>
-                        <li><a href="#blog">Blog</a></li>
                         <li><a href="#services">Services</a></li>
-                        <li><a href="#404">404</a></li>
+                        <li><a href="#results">Results</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h4>Information</h4>
                     <ul>
-                        <li><a href="#faq">FAQ</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        <li><a href="#legal">Legal</a></li>
-                        <li><a href="#soon">Coming Soon</a></li>
+                        <li><a href="#faq" class="modal-trigger" data-modal="faq">FAQ</a></li>
+                        <li><a href="#contact" class="modal-trigger" data-modal="contact">Contact</a></li>
+                        <li><a href="#legal" class="modal-trigger" data-modal="legal">Legal</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- Modal Popups -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+    
+    <!-- FAQ Modal -->
+    <div class="modal" id="faqModal">
+        <div class="modal-content">
+            <button class="modal-close" data-modal="faq">&times;</button>
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>What services does Atheleia offer?</h3>
+                    <p>We specialize in Social Media Strategy, SEO & Content Marketing, Performance Marketing (Paid Ads), and Email Marketing. Our focus is on helping startups and small businesses scale through data-driven digital marketing strategies.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How much do your services cost?</h3>
+                    <p>Our pricing is customized based on your specific needs and goals. We offer flexible packages tailored to your budget. Book a free 20-minute strategy call to discuss pricing options that work for you.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How long does it take to see results?</h3>
+                    <p>Most clients start seeing initial results within 30-60 days. However, digital marketing is a long-term investment. Our clients who commit to 6+ months see the most significant growth—like our 47% sales increases and 2x revenue improvements.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Do you work with small businesses?</h3>
+                    <p>Absolutely! We specialize in helping startups, small businesses, and personal brands. We understand the unique challenges of growing a business and create strategies that work within your budget.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What makes Atheleia different?</h3>
+                    <p>We're results-driven and data-focused. Our team has decades of combined experience, and we've achieved proven results like 80% SEO improvements, 3x ad revenue, and helped clients go from $0 to $1,000,000 in sales.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How do I get started?</h3>
+                    <p>Simply book a free 20-minute strategy call! We'll discuss your goals, challenges, and how we can help. There's no obligation—just valuable insights for your business.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <button class="modal-close" data-modal="contact">&times;</button>
+            <h2>Get in Touch with Atheleia</h2>
+            <div class="contact-info">
+                <div class="contact-method">
+                    <h3>📧 Email Us</h3>
+                    <p>hello@atheleia.com</p>
+                    <p class="contact-desc">We typically respond within 24 hours</p>
+                </div>
+                <div class="contact-method">
+                    <h3>💬 Live Chat</h3>
+                    <p>Click the chat icon (bottom right)</p>
+                    <p class="contact-desc">Get instant answers from our AI assistant</p>
+                </div>
+                <div class="contact-method">
+                    <h3>📅 Book a Call</h3>
+                    <p>Free 20-minute strategy session</p>
+                    <p class="contact-desc">Schedule directly through our contact form below</p>
+                </div>
+                <div class="contact-method">
+                    <h3>🕐 Business Hours</h3>
+                    <p>Monday - Friday: 9AM - 6PM EST</p>
+                    <p class="contact-desc">We're here to help you grow!</p>
+                </div>
+            </div>
+            <button class="btn-primary modal-cta" onclick="document.getElementById('contactModal').classList.remove('active'); document.getElementById('modalOverlay').classList.remove('active'); document.querySelector('.contact-form-section').scrollIntoView({behavior: 'smooth'});">
+                Go to Contact Form
+            </button>
+        </div>
+    </div>
+
+    <!-- Legal Modal -->
+    <div class="modal" id="legalModal">
+        <div class="modal-content">
+            <button class="modal-close" data-modal="legal">&times;</button>
+            <h2>Legal Information</h2>
+            <div class="legal-content">
+                <div class="legal-section">
+                    <h3>Terms of Service</h3>
+                    <p>By using Atheleia's services, you agree to our terms and conditions. We provide digital marketing services with the goal of helping your business grow. All strategies and campaigns are tailored to your specific needs and goals.</p>
+                    <p>Services are provided on a contract basis with clear deliverables and timelines. Cancellation policies vary by package—details provided during consultation.</p>
+                </div>
+                <div class="legal-section">
+                    <h3>Privacy Policy</h3>
+                    <p>Your privacy matters to us. We collect only necessary information to provide our services effectively. This includes contact details, business information, and performance data from your marketing campaigns.</p>
+                    <p>We never sell your data to third parties. Information is used solely to improve your marketing results and communication with our team.</p>
+                </div>
+                <div class="legal-section">
+                    <h3>Cookie Policy</h3>
+                    <p>We use cookies to enhance your browsing experience and analyze website traffic. Cookies help us understand how visitors interact with our site so we can improve it.</p>
+                    <p>You can disable cookies in your browser settings, though some features may not function properly.</p>
+                </div>
+                <div class="legal-section">
+                    <h3>Refund Policy</h3>
+                    <p>We stand behind our work. If you're not satisfied with our services within the first 30 days, we offer a prorated refund based on work completed. Full details provided in service agreements.</p>
+                </div>
+                <div class="legal-section">
+                    <h3>Contact for Legal Questions</h3>
+                    <p>For any legal inquiries or concerns, please contact us at legal@atheleia.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Floating Chat Widget -->
     <div class="chat-widget">

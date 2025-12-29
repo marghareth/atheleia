@@ -343,7 +343,60 @@ const imageObserver = new IntersectionObserver((entries, observer) => {
 
 images.forEach(img => imageObserver.observe(img));
 
-console.log('🚀 Megg Landing Page - All JavaScript loaded successfully!');
+console.log('🚀 Atheleia Landing Page - All JavaScript loaded successfully!');
+
+// ===== MODAL FUNCTIONALITY =====
+
+const modalOverlay = document.getElementById('modalOverlay');
+const modals = {
+    faq: document.getElementById('faqModal'),
+    contact: document.getElementById('contactModal'),
+    legal: document.getElementById('legalModal')
+};
+
+// Open Modal
+document.querySelectorAll('.modal-trigger').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const modalType = trigger.getAttribute('data-modal');
+        openModal(modalType);
+    });
+});
+
+function openModal(type) {
+    if (modals[type]) {
+        modalOverlay.classList.add('active');
+        modals[type].classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scroll
+    }
+}
+
+// Close Modal
+document.querySelectorAll('.modal-close').forEach(closeBtn => {
+    closeBtn.addEventListener('click', () => {
+        closeAllModals();
+    });
+});
+
+// Close on overlay click
+modalOverlay.addEventListener('click', () => {
+    closeAllModals();
+});
+
+// Close on ESC key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeAllModals();
+    }
+});
+
+function closeAllModals() {
+    modalOverlay.classList.remove('active');
+    Object.values(modals).forEach(modal => {
+        modal.classList.remove('active');
+    });
+    document.body.style.overflow = ''; // Restore scroll
+}
 
 // ===== CHAT WIDGET FUNCTIONALITY =====
 
@@ -357,7 +410,7 @@ const chatNotification = document.querySelector('.chat-notification');
 const minimizeChat = document.getElementById('minimizeChat');
 
 // Chat Widget Configuration
-const CHAT_WEBHOOK_URL = 'https://atheleia.app.n8n.cloud/webhook-test/chat'; // Replace with your n8n chat webhook
+const CHAT_WEBHOOK_URL = 'YOUR_N8N_CHAT_WEBHOOK_URL_HERE'; // Replace with your n8n chat webhook
 
 // Atheleia Business Knowledge (for reference)
 const atheileiaKnowledge = {
@@ -596,3 +649,4 @@ setTimeout(() => {
 }, 3000);
 
 console.log('💬 Chat widget initialized successfully!');
+console.log('✨ All features loaded: Modals, Chat, Forms, Animations');
