@@ -24,7 +24,7 @@ body {
     line-height: 1.6;
 }
 
-/* Enhanced Background Gradients - Darker & More Vibrant */
+/* Enhanced Background Gradients - Lighter Coral/Pink with Glassmorphism Texture */
 .gradient-bg {
     position: fixed;
     width: 100%;
@@ -34,57 +34,127 @@ body {
     z-index: -1;
     overflow: hidden;
     pointer-events: none;
-    background: linear-gradient(135deg, #fef5e7 0%, #ffe8f0 25%, #ffd4e5 50%, #ffb3d9 75%, #ff99cc 100%);
+    background: 
+        linear-gradient(135deg, 
+            #fafafa 0%, 
+            #ffe8ed 10%,
+            #ffd6e0 20%,
+            #ffc4d3 35%,
+            #ffb3c6 50%,
+            #ffa3bc 65%,
+            #ff94b3 80%,
+            #ff85aa 100%);
+}
+
+/* Glassmorphism Texture Overlay */
+.gradient-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        repeating-linear-gradient(0deg, 
+            rgba(255, 255, 255, 0.03) 0px, 
+            transparent 1px, 
+            transparent 2px, 
+            rgba(255, 255, 255, 0.03) 3px),
+        repeating-linear-gradient(90deg, 
+            rgba(255, 255, 255, 0.03) 0px, 
+            transparent 1px, 
+            transparent 2px, 
+            rgba(255, 255, 255, 0.03) 3px),
+        repeating-linear-gradient(45deg, 
+            rgba(255, 255, 255, 0.02) 0px, 
+            transparent 2px, 
+            transparent 4px, 
+            rgba(255, 255, 255, 0.02) 6px);
+    opacity: 0.6;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+}
+
+/* Noise/Grain Texture */
+.gradient-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.08;
+    mix-blend-mode: soft-light;
+    pointer-events: none;
 }
 
 .gradient-blob {
     position: absolute;
     border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.7;
-    animation: float 20s ease-in-out infinite;
+    filter: blur(180px);
+    opacity: 0.4;
+    animation: float 30s ease-in-out infinite;
+    backdrop-filter: blur(100px);
+    -webkit-backdrop-filter: blur(100px);
 }
 
 @keyframes float {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(30px, -30px) scale(1.1); }
-    66% { transform: translate(-20px, 20px) scale(0.9); }
+    0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+    33% { transform: translate(60px, -60px) scale(1.2) rotate(120deg); }
+    66% { transform: translate(-40px, 40px) scale(0.8) rotate(240deg); }
 }
 
 .blob-1 {
-    width: 900px;
-    height: 900px;
-    background: radial-gradient(circle, #FF6B9D 0%, #FF8FAB 50%, rgba(255, 143, 171, 0) 100%);
-    top: -400px;
-    left: -300px;
+    width: 1100px;
+    height: 1100px;
+    background: radial-gradient(circle, 
+        rgba(255, 255, 255, 0.5) 0%, 
+        rgba(255, 255, 255, 0.3) 25%, 
+        rgba(255, 240, 245, 0.2) 50%,
+        rgba(255, 255, 255, 0) 75%);
+    top: -550px;
+    left: -350px;
     animation-delay: 0s;
 }
 
 .blob-2 {
-    width: 700px;
-    height: 700px;
-    background: radial-gradient(circle, #FF1493 0%, #FF69B4 50%, rgba(255, 105, 180, 0) 100%);
-    top: -200px;
-    right: -200px;
-    filter: blur(100px);
-    animation-delay: 5s;
-}
-
-.blob-3 {
-    width: 800px;
-    height: 800px;
-    background: radial-gradient(circle, #FF7BA9 0%, #FFA0C8 50%, rgba(255, 160, 200, 0) 100%);
-    bottom: 20%;
-    right: -150px;
+    width: 900px;
+    height: 900px;
+    background: radial-gradient(circle, 
+        rgba(255, 179, 198, 0.35) 0%, 
+        rgba(255, 163, 188, 0.25) 30%, 
+        rgba(255, 196, 212, 0.15) 60%,
+        rgba(255, 230, 240, 0) 85%);
+    top: -150px;
+    right: -250px;
+    filter: blur(160px);
     animation-delay: 10s;
 }
 
+.blob-3 {
+    width: 1000px;
+    height: 1000px;
+    background: radial-gradient(circle, 
+        rgba(255, 214, 224, 0.4) 0%, 
+        rgba(255, 196, 211, 0.3) 30%, 
+        rgba(255, 232, 240, 0.2) 55%,
+        rgba(255, 255, 255, 0) 80%);
+    bottom: 5%;
+    right: -200px;
+    animation-delay: 20s;
+}
+
 .blob-4 {
-    width: 850px;
-    height: 850px;
-    background: radial-gradient(circle, #FF85A6 0%, #FFB3CC 50%, rgba(255, 179, 204, 0) 100%);
-    top: 50%;
-    left: -250px;
+    width: 1050px;
+    height: 1050px;
+    background: radial-gradient(circle, 
+        rgba(255, 245, 248, 0.45) 0%, 
+        rgba(255, 235, 242, 0.3) 35%, 
+        rgba(255, 255, 255, 0.15) 65%,
+        rgba(255, 255, 255, 0) 85%);
+    top: 35%;
+    left: -300px;
     animation-delay: 15s;
 }
 
@@ -430,22 +500,28 @@ section {
 }
 
 .result-card {
-    background: rgba(254, 250, 224, 0.5);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 2px solid rgba(255, 255, 255, 0.4);
+    background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.1) 0%, 
+                rgba(255, 255, 255, 0.05) 100%);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 24px;
     padding: 32px;
-    box-shadow: 0 8px 32px rgba(255, 105, 180, 0.15),
-                0 4px 16px rgba(0, 0, 0, 0.05),
-                inset 0 1px 1px rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
+                0 1px 1px rgba(255, 255, 255, 0.6) inset,
+                0 -1px 1px rgba(0, 0, 0, 0.05) inset;
     transition: all 0.4s ease;
 }
 
 .result-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 40px rgba(255, 105, 180, 0.25),
-                0 6px 20px rgba(0, 0, 0, 0.08);
+    background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.15) 0%, 
+                rgba(255, 255, 255, 0.08) 100%);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15),
+                0 2px 2px rgba(255, 255, 255, 0.7) inset,
+                0 -2px 2px rgba(0, 0, 0, 0.05) inset;
 }
 
 .result-card img {
@@ -464,11 +540,16 @@ section {
 }
 
 .tag {
-    background: var(--border-cream);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 9px 11px;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 15px;
     font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05),
+                0 1px 1px rgba(255, 255, 255, 0.4) inset;
 }
 
 .result-author {
