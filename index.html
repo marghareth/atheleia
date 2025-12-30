@@ -1,5 +1,3 @@
-<!--api keys: html: https://atheleia.app.n8n.cloud/webhook/contact-form-->
-<!--api key: js: https://atheleia.app.n8n.cloud/webhook/chat-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +27,7 @@
                 <li><a href="#results">Results</a></li>
                 <li><a href="#services">Services</a></li>
             </ul>
-            <button class="btn-primary">Get in touch</button>
+            <button class="btn-primary" onclick="document.querySelector('.contact-form-section').scrollIntoView({behavior: 'smooth'});">Get in touch</button>
         </div>
     </nav>
 
@@ -46,14 +44,14 @@
             </p>
             <div class="hero-clients">
                 <div class="client-avatars">
-                    <img src="https://placehold.co/32x32" alt="Client">
-                    <img src="https://placehold.co/32x32" alt="Client">
-                    <img src="https://placehold.co/32x32" alt="Client">
+                    <img src="assets/avatar1.svg" alt="Client">
+                    <img src="assets/avatar2.svg" alt="Client">
+                    <img src="assets/avatar3.svg" alt="Client">
                 </div>
                 <span class="clients-count">80+ happy clients</span>
             </div>
             <div class="hero-buttons">
-                <button class="btn-primary">Book a free call</button>
+                <button class="btn-primary" onclick="document.querySelector('.contact-form-section').scrollIntoView({behavior: 'smooth'});">Get in touch</button>
                 <button class="btn-secondary">See our work</button>
             </div>
         </div>
@@ -63,11 +61,10 @@
     <section class="trusted-by">
         <p class="trusted-label">TRUSTED BY COMPANIES</p>
         <div class="company-logos">
-            <img src="https://placehold.co/120x40?text=unfold" alt="Company">
-            <img src="https://placehold.co/120x40?text=unfold" alt="Company">
-            <img src="https://placehold.co/120x40?text=unfold" alt="Company">
-            <img src="https://placehold.co/120x40?text=unfold" alt="Company">
-            <img src="https://placehold.co/120x40?text=unfold" alt="Company">
+            <img src="assets/logo1.svg" alt="Company">
+            <img src="assets/logo2.svg" alt="Company">
+            <img src="assets/logo4.svg" alt="Company">
+            <img src="assets/logo5.svg" alt="Company">
         </div>
     </section>
 
@@ -106,7 +103,7 @@
         <div class="cta-content">
             <h2>Not sure where to start or what your business needs most? Let's figure it out—together.</h2>
             <p>In a free 20-minute strategy call,</p>
-            <button class="btn-primary">Book a 20 min call →</button>
+            <button class="btn-primary" onclick="document.querySelector('.contact-form-section').scrollIntoView({behavior: 'smooth'});">Get in touch →</button>
         </div>
     </section>
 
@@ -118,7 +115,7 @@
         
         <div class="results-carousel">
             <div class="result-card">
-                <img src="https://placehold.co/355x255" alt="Project">
+                <img src="assets/img1.svg" alt="Project">
                 <div class="result-tags">
                     <span class="tag">Sales increase by 47%</span>
                     <span class="tag">2x Website visits</span>
@@ -130,7 +127,7 @@
                 </div>
             </div>
             <div class="result-card">
-                <img src="https://placehold.co/355x255" alt="Project">
+                <img src="assets/img2.svg" alt="Project">
                 <div class="result-tags">
                     <span class="tag">SEO Search by 62%</span>
                     <span class="tag">2x Revenue from Ads</span>
@@ -142,7 +139,7 @@
                 </div>
             </div>
             <div class="result-card">
-                <img src="https://placehold.co/355x255" alt="Project">
+                <img src="assets/img3.svg" alt="Project">
                 <div class="result-tags">
                     <span class="tag">SEO Search by 80%</span>
                     <span class="tag">3x Revenue from Ads</span>
@@ -183,7 +180,7 @@
         <div class="cta2-card">
             <h2>Ready to scale your brand to <span class="italic-text">new heights?</span></h2>
             <p>If you want to achieve ground-breaking growth with increased sales and profitability with paid ads, then you're in the right place.</p>
-            <button class="btn-primary">Book a call</button>
+            <button class="btn-primary" onclick="document.querySelector('.contact-form-section').scrollIntoView({behavior: 'smooth'});">Get in touch</button>
         </div>
     </section>
 
@@ -193,7 +190,7 @@
             <h2>Get In Touch</h2>
             <p>Ready to transform your business? Fill out the form below and we'll get back to you within 24 hours.</p>
             
-            <form class="contact-form" id="contactForm" action="YOUR_N8N_WEBHOOK_URL_HERE" method="POST">
+            <form class="contact-form" id="contactForm" action="https://atheleia.app.n8n.cloud/webhook/contact-form" method="POST">
                 <div class="form-group">
                     <label for="fullName">Full Name <span class="required">*</span></label>
                     <input 

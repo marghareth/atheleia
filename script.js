@@ -410,7 +410,7 @@ const chatNotification = document.querySelector('.chat-notification');
 const minimizeChat = document.getElementById('minimizeChat');
 
 // Chat Widget Configuration
-const CHAT_WEBHOOK_URL = 'YOUR_N8N_CHAT_WEBHOOK_URL_HERE'; // Replace with your n8n chat webhook
+const CHAT_WEBHOOK_URL = 'https://atheleia.app.n8n.cloud/webhook/chat'; 
 
 // Atheleia Business Knowledge (for reference)
 const atheileiaKnowledge = {
