@@ -3,13 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Megg - Digital Marketing Agency</title>
+    <title>Atheleia - Digital Marketing Agency</title>
+    <meta name="description" content="Atheleia helps startups and small businesses grow through data-driven digital marketing. Get proven results with our SEO, social media, and performance marketing services.">
+    <meta property="og:title" content="Atheleia - Digital Marketing Agency">
+    <meta property="og:description" content="Transform your business with proven digital marketing strategies. 80+ happy clients, 47% sales increases, and data-driven results.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="scroll-progress" id="scrollProgress"></div>
     <!-- Background Gradients -->
     <div class="gradient-bg">
         <div class="gradient-blob blob-1"></div>
@@ -21,7 +26,10 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
+            <div class="nav-container">
+            <button class="hamburger" id="mobileMenuToggle" aria-label="Toggle menu">☰</button>
             <div class="logo">Atheleia</div>
+            <ul class="nav-links" id="navLinks">
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#results">Results</a></li>
@@ -463,6 +471,12 @@
         </div>
     </div>
 
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+    </button>
+    
     <script src="script.js"></script>
 </body>
 </html>
