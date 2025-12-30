@@ -29,7 +29,7 @@
 
 ## 🎯 Project Overview
 
-This project was developed as part of the tryout task for Tidal Solutions (2026). The objective was to create a marketing landing page integrated with an n8n automation workflow that processes form submissions and generates AI-powered automated responses.
+This project was developed as part of the internship tryout task for Tidal Solutions (2026). The objective was to create a marketing landing page integrated with an n8n automation workflow that processes form submissions and generates AI-powered automated responses.
 
 **Project Concept:** Digital Marketing Agency Landing Page
 
@@ -147,7 +147,7 @@ https://atheleia.app.n8n.cloud/webhook/contact-form
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/marghareth/atheleia.git
+   git clone https://github.com/yourusername/atheleia.git
    cd atheleia
    ```
 
@@ -209,22 +209,19 @@ The AI agent is configured to:
 
 ### Workflow Configuration
 
-Detailed workflow setup is documented in:
-- [N8N_INTEGRATION.md](docs/N8N_INTEGRATION.md) - Complete setup guide
-- [API_REFERENCE.md](docs/API_REFERENCE.md) - Webhook API documentation
+Detailed workflow setup and webhook API documentation is available in [N8N_INTEGRATION.md](docs/N8N_INTEGRATION.md).
 
 ---
 
 ## 📚 Documentation
 
-Comprehensive documentation is available in the `/docs` folder:
+Additional documentation is available in the `/docs` folder:
 
 | Document | Description |
 |----------|-------------|
-| [SETUP.md](docs/SETUP.md) | Detailed installation and setup |
-| [N8N_INTEGRATION.md](docs/N8N_INTEGRATION.md) | n8n workflow configuration guide |
-| [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) | Common issues and solutions |
-| [API_REFERENCE.md](docs/API_REFERENCE.md) | Webhook API documentation |
+| [SETUP.md](docs/SETUP.md) | Quick start and installation guide |
+| [N8N_INTEGRATION.md](docs/N8N_INTEGRATION.md) | Complete n8n workflow setup and configuration |
+| [PROJECT_APPROACH.md](docs/PROJECT_APPROACH.md) | Thought process, decisions, and learnings |
 
 ---
 
@@ -262,7 +259,7 @@ Through this tryout task, I gained practical experience in:
 
 Email: buenomarghareth@gmail.com
 
-Project Repository: [https://github.com/marghareth/atheleia.git](https://github.com/marghareth/atheleia.git)
+Project Repository: [https://github.com/yourusername/atheleia](https://github.com/yourusername/atheleia)
 
 ---
 
