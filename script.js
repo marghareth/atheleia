@@ -12,6 +12,33 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Scroll Progress Indicator
+const scrollProgress = document.getElementById('scrollProgress');
+
+window.addEventListener('scroll', () => {
+    const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (window.scrollY / windowHeight) * 100;
+    scrollProgress.style.width = scrolled + '%';
+});
+
+// Back to Top Button
+const backToTop = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+        backToTop.classList.add('show');
+    } else {
+        backToTop.classList.remove('show');
+    }
+});
+
+backToTop.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
 // Navbar Glassmorphism Enhancement on Scroll
 const nav = document.querySelector('nav');
 const navContainer = document.querySelector('.nav-container');
@@ -305,40 +332,73 @@ if (newsletterForm) {
     });
 }
 
-// Mobile Menu Toggle (if you want to add mobile menu later)
-const createMobileMenu = () => {
-    const navLinks = document.querySelector('.nav-links');
-    const hamburger = document.createElement('div');
-    hamburger.className = 'hamburger';
-    hamburger.innerHTML = '☰';
-    hamburger.style.display = 'none';
-    hamburger.style.fontSize = '24px';
-    hamburger.style.cursor = 'pointer';
-    
-    if (window.innerWidth <= 768) {
-        hamburger.style.display = 'block';
-        document.querySelector('.nav-container').prepend(hamburger);
-        
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('mobile-active');
+// Mobile Menu Toggle
+const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+const navLinks = document.getElementById('navLinks');
+
+if (mobileMenuToggle) {
+    mobileMenuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navLinks.classList.toggle('mobile-active');
+        mobileMenuToggle.textContent = navLinks.classList.contains('mobile-active') ? '✕' : '☰';
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+            navLinks.classList.remove('mobile-active');
+            mobileMenuToggle.textContent = '☰';
+        }
+    });
+
+    // Close menu when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('mobile-active');
+            mobileMenuToggle.textContent = '☰';
         });
-    }
-};
+    });
+}
 
-window.addEventListener('resize', createMobileMenu);
-createMobileMenu();
-
-// Lazy Loading for Images (better performance)
+// Enhanced Lazy Loading for Images
 const images = document.querySelectorAll('img');
 const imageObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const img = entry.target;
-            img.src = img.dataset.src || img.src;
-            img.classList.add('loaded');
+            
+            // Handle data-src for lazy loading
+            if (img.dataset.src) {
+                img.src = img.dataset.src;
+            }
+            
+            // Add loaded class when image actually loads
+            if (img.complete) {
+                img.classList.add('loaded');
+            } else {
+                img.addEventListener('load', () => {
+                    img.classList.add('loaded');
+                });
+                img.addEventListener('error', () => {
+                    img.classList.add('loaded'); // Still fade in even if error
+                    console.warn('Image failed to load:', img.src);
+                });
+            }
+            
             observer.unobserve(img);
         }
     });
+}, {
+    rootMargin: '50px' // Start loading 50px before entering viewport
+});
+
+images.forEach(img => {
+    // SVG images load immediately
+    if (img.src.includes('.svg')) {
+        img.classList.add('loaded');
+    } else {
+        imageObserver.observe(img);
+    }
 });
 
 images.forEach(img => imageObserver.observe(img));
