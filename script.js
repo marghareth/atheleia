@@ -562,7 +562,7 @@ async function sendMessage(message) {
     
     try {
         // Check if webhook URL is configured
-        if (!CHAT_WEBHOOK_URL || CHAT_WEBHOOK_URL === 'YOUR_N8N_CHAT_WEBHOOK_URL_HERE') {
+        if (!CHAT_WEBHOOK_URL || CHAT_WEBHOOK_URL === 'https://atheleia.app.n8n.cloud/webhook/chat') {
             // Simulate AI response for demo (remove this when n8n is set up)
             setTimeout(() => {
                 const demoResponse = getDemoResponse(message);
@@ -710,3 +710,42 @@ setTimeout(() => {
 
 console.log('💬 Chat widget initialized successfully!');
 console.log('✨ All features loaded: Modals, Chat, Forms, Animations');
+
+// Function to handle Newsletter Signup
+async function joinNewsletter() {
+    // 1. Get the email value from the input box
+    // (Replace 'newsletter-email-input' with the actual ID of your input box)
+    const emailInput = document.querySelector('input[type="email"]');
+    const email = emailInput.value;
+
+    if (!email) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+
+    // 2. Send the email to n8n
+    try {
+        const response = await fetch('https://atheleia.app.n8n.cloud/webhook/newsletter', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email })
+        });
+
+        if (response.ok) {
+            alert("Thanks for subscribing! Check your inbox.");
+            emailInput.value = ""; // Clear the box
+        } else {
+            alert("Something went wrong. Please try again.");
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Error connecting to server.");
+    }
+}
+
+// 3. Attach this function to your "Get Notified" button
+// (Replace 'newsletter-button' with the actual ID or class of your button)
+const newsletterBtn = document.querySelector('.newsletter-button-class-or-id');
+if (newsletterBtn) {
+    newsletterBtn.addEventListener('click', joinNewsletter);
+}

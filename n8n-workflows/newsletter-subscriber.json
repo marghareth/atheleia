@@ -1,0 +1,175 @@
+{
+  "name": "newsletter-subscriber",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "newsletter",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "35d17510-2f86-458a-97ab-6ffdc36c32b0",
+      "name": "Webhook",
+      "webhookId": "6936fd2a-77a9-4c09-a4e2-ae0197528d30"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1uhMrl3lHTdmrWRvIh8V27pPmmQEEdwG1r3Pue5TYh8U",
+          "mode": "list",
+          "cachedResultName": "Newsletter Subscribers",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1uhMrl3lHTdmrWRvIh8V27pPmmQEEdwG1r3Pue5TYh8U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1uhMrl3lHTdmrWRvIh8V27pPmmQEEdwG1r3Pue5TYh8U/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Email": "={{ $json.email }}",
+            "Date": "={{ $now }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        0
+      ],
+      "id": "fd08960b-4a18-4f74-8d0d-403127e43e14",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "EUwFjURulzmLXrzC",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.Email }}",
+        "subject": "Welcome to the Atheleia Insider List!",
+        "message": "<p>Hi there!</p> <p>Thanks for joining the Atheleia newsletter. You are now on the list to receive our latest updates on digital marketing trends.</p> <p>Stay tuned!</p> <p><b>The Atheleia Team</b></p>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        416,
+        0
+      ],
+      "id": "302ce076-1539-4d02-909e-7358059297e5",
+      "name": "Send a message",
+      "webhookId": "8978fd52-9beb-409c-bd2c-1784c3cf05b6",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "Uh4jW50pj7BOnZ27",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{ \"status\": \"success\", \"message\": \"Signed up!\" }",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        624,
+        0
+      ],
+      "id": "7c13a4c7-c9e0-437e-b9c8-b8aac4a45b85",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionTimeout": -1
+  },
+  "versionId": "3535b7b6-da7e-47cd-9e76-c219e02b4c5c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "b0358f5b9cd686cfaead66b8448061e9de9a0fc81a07cb87920754ffa8d43f5d"
+  },
+  "id": "h7olm27AIudptYFZ",
+  "tags": []
+}

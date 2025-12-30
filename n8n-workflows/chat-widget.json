@@ -1,0 +1,150 @@
+{
+  "name": "chat-widget",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "chat",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "c3f21cf0-375c-4ffd-b80f-a3815f48ca64",
+      "name": "Webhook",
+      "webhookId": "0d4823ef-7b1a-4a77-8d81-82edcb76f8d7"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4977bccb-a3ca-4e08-892f-b2cb028de748",
+              "name": "message",
+              "value": "={{ $json.body.message}}",
+              "type": "string"
+            },
+            {
+              "id": "64c01f1a-2fa9-4d5d-b3c2-8d1f13b78962",
+              "name": "timestamp",
+              "value": "={{ $json.body.timestamp }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "ce0730a5-d3cc-44bf-8acb-68f58db87b79",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"deepseek/deepseek-chat\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are Atheleia's friendly AI chat assistant for a digital marketing agency.\\n\\nCompany Knowledge:\\n- Services: Social Media Strategy, SEO & Content Marketing, Performance Marketing, Email Marketing\\n- We help startups and small businesses scale through data-driven strategies\\n- Results: 47% sales increases, 2x revenue, 80% SEO improvements, 3x ad revenue\\n- We have 80+ happy clients\\n- Free 20-minute strategy call available\\n\\nInstructions:\\n- IMPORTANT: Do NOT use asterisks (**) or bold formatting. Use plain text only.\\n- Be friendly, professional, and concise (2-3 sentences max)\\n- If asked about services, list them briefly\\n- If asked about pricing, suggest booking a free consultation\\n- If asked about results, mention 1-2 success stories\\n- For complex questions, offer to connect them with the team via contact form\\n- Always be helpful and encouraging\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"{{ $('Edit Fields').first().json.message }}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        416,
+        0
+      ],
+      "id": "411e6ef7-779a-49e4-92a8-358519a831f1",
+      "name": "HTTP Request",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "sXYvoGgJUSwS00rf",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { \"response\": $json.choices[0].message.content } }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        624,
+        0
+      ],
+      "id": "d0a83b5b-3e9d-401e-b412-11d98088d099",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "615e88b0-3107-451b-9240-54440c617c58",
+  "meta": {
+    "instanceId": "b0358f5b9cd686cfaead66b8448061e9de9a0fc81a07cb87920754ffa8d43f5d"
+  },
+  "id": "EYXQNA4jSDS9BtQh",
+  "tags": []
+}

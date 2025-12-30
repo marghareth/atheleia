@@ -1,0 +1,293 @@
+{
+  "name": "contact-form",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "contact-form",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "76383f41-0378-4ad3-b216-0f6936ffd5f7",
+      "name": "Webhook",
+      "webhookId": "ab6e745e-7adf-48cb-ad55-f192c7a0676f"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7100e0c6-8033-46b6-9c02-54baaa236fd9",
+              "name": "name",
+              "value": "={{ $json.body.name}}",
+              "type": "string"
+            },
+            {
+              "id": "6c733a02-5843-4d43-909e-6b4dd7d9bff0",
+              "name": "email",
+              "value": "={{ $json.body.email }}",
+              "type": "string"
+            },
+            {
+              "id": "c58c31b1-d628-4bde-ad13-0668ac6aa394",
+              "name": "message",
+              "value": "={{ $json.body.message }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "3f90989f-0fa9-44b3-bdd0-7686e8aa3127",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"deepseek/deepseek-chat\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a helpful customer service representative for Atheleia. Format your response using HTML tags (use <p> for paragraphs, <b> for bolding, <br> for line breaks). Do NOT use Markdown (like ** or ##). Do NOT include a Subject line.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"User Details:\\nName: {{ $json.name }}\\nEmail: {{ $json.email }}\\nMessage: {{ $json.message }}\\n\\nWrite a professional and friendly email response that:\\n1. Thanks them by name\\n2. Acknowledges their specific inquiry\\n3. Mentions we'll follow up within 24 hours\\n4. Invites them to book a free strategy call\\n5. Signs off as 'The Atheleia Team'\\n\\nRemember: Output raw HTML code only. Do not wrap it in ```html ```.\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        416,
+        0
+      ],
+      "id": "7d3a2b7f-ae50-47d8-b87b-f8ec09aa97b7",
+      "name": "HTTP Request",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "sXYvoGgJUSwS00rf",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. Get the AI response from the previous node (HTTP Request)\nconst response = items[0].json.choices[0].message.content;\n\n// 2. LOOK BACK at the 'Edit Fields' node to find the original Name and Email\n// (Make sure the node name inside $('...') matches exactly)\nconst originalData = $('Edit Fields').first().json;\n\nreturn [\n  {\n    json: {\n      aiResponse: response,\n      name: originalData.name,\n      email: originalData.email\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        624,
+        0
+      ],
+      "id": "491d5ca3-5422-4e90-bade-5b0a894d68a0",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.email }}",
+        "subject": "Thank you for contacting Atheleia!",
+        "message": "={{ $json.aiResponse }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        832,
+        0
+      ],
+      "id": "7d1550d5-547c-4bac-b047-1b037c408558",
+      "name": "Send a message",
+      "webhookId": "411494b0-b41a-43ea-a5f5-6579906fbbd3",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "Uh4jW50pj7BOnZ27",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "15CTX-cWNZq0bR64uTIEGwWuSechqHE2xyrp-IMXlIWA",
+          "mode": "list",
+          "cachedResultName": "Atheleia - Inquiry Sheet",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15CTX-cWNZq0bR64uTIEGwWuSechqHE2xyrp-IMXlIWA/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15CTX-cWNZq0bR64uTIEGwWuSechqHE2xyrp-IMXlIWA/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $('Edit Fields').item.json.name }}",
+            "Email": "={{ $('Edit Fields').item.json.email }}",
+            "Message / Summary": "={{ $('Edit Fields').item.json.message }}",
+            "Date": "={{ $now }}",
+            "Status": "=New"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Message / Summary",
+              "displayName": "Message / Summary",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1040,
+        0
+      ],
+      "id": "a7f51ae4-1b85-4a59-80a9-f2affb1e580a",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "EUwFjURulzmLXrzC",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "33f81ef9-9dd3-47b6-b178-899afc16d7a2",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "b0358f5b9cd686cfaead66b8448061e9de9a0fc81a07cb87920754ffa8d43f5d"
+  },
+  "id": "bZEQFyGeVsI2ZFPC",
+  "tags": []
+}
