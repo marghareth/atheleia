@@ -1,4 +1,4 @@
-# Atheleia - Digital Marketing Agency Website
+# Atheleia - Digital Marketing Agency Landing Page
 
 <div align="center">
 
@@ -6,286 +6,263 @@
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?style=flat-square)](https://github.com/yourusername/atheleia)
 [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](LICENSE)
 
-**A modern, glassmorphism-styled landing page for a digital marketing agency**
+**Internship Tryout Task Submission for Tidal Solutions**
 
-[Demo](#) • [Documentation](docs/) • [Report Bug](#) • [Request Feature](#)
+[Live Demo](#) • [Video Walkthrough](#) • [Documentation](docs/)
 
 </div>
 
 ---
 
-## 📖 Table of Contents
+## 📋 Table of Contents
 
-- [About](#about)
-- [Features](#features)
+- [Project Overview](#project-overview)
+- [Task Requirements](#task-requirements)
+- [Implementation](#implementation)
 - [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-- [n8n Integration](#n8n-integration)
-- [Customization](#customization)
-- [Deployment](#deployment)
+- [Setup Instructions](#setup-instructions)
+- [n8n Workflow](#n8n-workflow)
 - [Documentation](#documentation)
-- [Contributing](#contributing)
-- [License](#license)
+- [Contact](#contact)
 
 ---
 
-## 🎯 About
+## 🎯 Project Overview
 
-Atheleia is a production-ready landing page for digital marketing agencies. Built with modern web technologies and featuring a stunning glassmorphism design system, this website helps agencies showcase their services, results, and capture leads through integrated contact forms and AI chat.
+This project was developed as part of the tryout task for Tidal Solutions (2026). The objective was to create a marketing landing page integrated with an n8n automation workflow that processes form submissions and generates AI-powered automated responses.
 
-### Why Atheleia?
+**Project Concept:** Digital Marketing Agency Landing Page
 
-- ✨ **Modern Design**: Glassmorphism UI with animated gradients
-- 📱 **Fully Responsive**: Mobile-first design that works on all devices
-- 🚀 **Performance Optimized**: Lazy loading, smooth animations, fast load times
-- 🤖 **AI-Powered Chat**: Integrated chat widget with n8n backend
-- 📧 **Lead Capture**: Contact forms connected to n8n workflows
-- ♿ **Accessible**: ARIA labels, semantic HTML, keyboard navigation
-- 🎨 **Easy to Customize**: Clean code, well-documented, modular structure
+**Key Features:**
+- Professional landing page with glassmorphism design
+- Functional contact form with validation
+- n8n workflow automation for form processing
+- AI-generated email responses to user inquiries
+- Fully responsive and mobile-optimized
 
----
+**Live Demo:** [Insert your landing page URL]
 
-## ✨ Features
-
-### Design & UI
-- 🎨 Glassmorphism design system with frosted glass effects
-- 🌈 Animated gradient backgrounds with floating blobs
-- 💫 Smooth scroll animations and transitions
-- 📊 Scroll progress indicator
-- ⬆️ Back-to-top button
-- 🌙 Optimized color palette for readability
-
-### Functionality
-- 📱 Responsive mobile navigation with hamburger menu
-- 💬 AI-powered chat widget with n8n integration
-- 📝 Contact form with validation and n8n webhook
-- 🎭 Modal popups for FAQ, Contact Info, and Legal
-- 🖼️ Lazy loading images with fade-in effects
-- 🔄 Real-time form validation with error handling
-
-### Content Sections
-- 🏠 Hero section with CTA buttons
-- 🏢 Trusted by companies showcase
-- 📋 Services overview (4 main services)
-- 📈 Results/testimonials carousel
-- 🎯 Detailed services section
-- 📞 Multiple CTAs throughout the page
-- 📧 Contact form with webhook integration
-- 🦶 Footer with newsletter signup
-
-### Technical
-- ⚡ Vanilla JavaScript (no dependencies)
-- 🔌 n8n webhook integration for backend
-- 🎯 SEO optimized with meta tags
-- 🌐 Open Graph tags for social sharing
-- 🔒 Form validation and sanitization
-- 📱 Mobile-first responsive design
+**Video Presentation:** [Insert your Loom video link]
 
 ---
 
-## 🛠️ Tech Stack
+## ✅ Task Requirements
+
+### Step 1: Landing Page Creation ✓
+
+Created a professional landing page with the following sections:
+
+- **Hero Section:** Company name (Atheleia) with value proposition
+- **Services Section:** Four core digital marketing services
+- **Contact Us Section:** Functional form with Name, Email, and Message fields
+
+### Step 2: Form Integration ✓
+
+The contact form is connected to an n8n webhook that captures and processes all form submissions in real-time.
+
+### Step 3: n8n Automation Workflow ✓
+
+Built an n8n workflow that:
+- Receives form submission data via webhook
+- Processes and formats user information
+- Triggers an AI agent to generate personalized responses
+- Sends automated email replies to users
+
+### Step 4: Automated Response Requirements ✓
+
+AI-generated responses include:
+- Acknowledgment of inquiry receipt
+- Gratitude for reaching out
+- Information about team follow-up
+- Professional, friendly, and human-like tone
+
+---
+
+## 🛠️ Implementation
+
+### Landing Page Architecture
+
+The landing page is built with vanilla HTML, CSS, and JavaScript to ensure:
+- Fast load times and optimal performance
+- Easy deployment and maintenance
+- Clean, readable code structure
+- No framework dependencies
+
+**Key Sections:**
+1. Hero section with clear call-to-action
+2. Trusted companies showcase
+3. Services overview (SEO, Social Media, PPC, Content Marketing)
+4. Client testimonials with carousel
+5. Detailed services section
+6. Contact form with real-time validation
+7. Footer with additional contact options
+
+### Form Validation
+
+Implemented client-side validation for:
+- Required fields (Name, Email, Message)
+- Email format verification
+- Input sanitization
+- Error message display
+- Success feedback
+
+### n8n Integration
+
+**Webhook Endpoint:**
+```
+https://atheleia.app.n8n.cloud/webhook/contact-form
+```
+
+**Data Flow:**
+1. User submits contact form
+2. JavaScript validates and sends data to n8n webhook
+3. n8n workflow receives and processes submission
+4. AI generates personalized response
+5. Automated email sent to user
+6. Success confirmation displayed on landing page
+
+---
+
+## 💻 Tech Stack
 
 | Technology | Purpose |
 |------------|---------|
-| **HTML5** | Semantic markup and structure |
-| **CSS3** | Styling with custom properties and animations |
-| **JavaScript (ES6+)** | Interactivity and dynamic functionality |
-| **n8n** | Backend automation for forms and chat |
-| **Google Fonts** | Typography (Inter & Instrument Serif) |
-| **SVG** | Scalable graphics and icons |
-
-### Why No Framework?
-
-This project intentionally uses **vanilla JavaScript** instead of frameworks like React or Vue because:
-- ⚡ Faster load times (no framework overhead)
-- 🎯 Better performance (no virtual DOM)
-- 📦 Smaller bundle size
-- 🔧 Easier to customize
-- 🎓 More accessible for beginners
-- 🚀 Simpler deployment (just static files)
+| HTML5 | Semantic structure and markup |
+| CSS3 | Styling with custom properties and animations |
+| JavaScript (ES6+) | Form validation and webhook integration |
+| n8n | Workflow automation and backend processing |
+| AI Integration | Automated response generation |
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Setup Instructions
 
 ### Prerequisites
 
-- A web browser (Chrome, Firefox, Safari, Edge)
-- A code editor (VS Code, Sublime, etc.)
-- [n8n](https://n8n.io) instance (self-hosted or cloud)
-- Basic knowledge of HTML, CSS, and JavaScript
+- Web browser (Chrome, Firefox, Safari, Edge)
+- n8n instance (cloud or self-hosted)
+- Code editor (optional)
 
-### Quick Start
+### Installation
 
-1. **Clone the repository**
+1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/atheleia.git
+   git clone https://github.com/marghareth/atheleia.git
    cd atheleia
    ```
 
-2. **Set up your assets**
-   - Replace placeholder images in `/assets/` with your own
-   - Update logo SVGs with your branding
-   - Customize avatar images for testimonials
+2. Configure n8n webhook:
+   - Import workflow from `/n8n-workflows/contact-form-workflow.json`
+   - Activate the workflow in your n8n instance
+   - Copy your webhook URL
+   - Update webhook URL in `index.html` (line 185)
 
-3. **Configure n8n webhooks**
-   - Follow the [n8n Integration Guide](docs/N8N_INTEGRATION.md)
-   - Update webhook URLs in `index.html` and `script.js`
-
-4. **Open in browser**
+3. Deploy or run locally:
    ```bash
-   # Using Python
+   # Local development server
    python -m http.server 8000
-   
-   # Using Node.js
+   # or
    npx serve
-   
-   # Or just open index.html directly
    ```
 
-5. **Customize content**
-   - Edit text content in `index.html`
-   - Adjust colors in `style.css` (CSS custom properties)
-   - Modify animations and interactions in `script.js`
+4. Test the contact form:
+   - Fill out the form with test data
+   - Submit and verify webhook receives data
+   - Check that automated email is sent
 
 ---
 
-## 🔌 n8n Integration
+## 🔄 n8n Workflow
 
-This website uses **n8n** for backend automation. n8n handles:
+### Workflow Overview
 
-1. **Contact Form Submissions** → Email notifications, CRM updates
-2. **Chat Widget Messages** → AI responses, lead qualification
-3. **Newsletter Signups** → Email list management
+The n8n automation workflow consists of the following nodes:
 
-### Webhook Endpoints
+1. **Webhook Node:** Receives POST requests from contact form
+2. **Set Node:** Formats and structures incoming data
+3. **AI Agent Node:** Generates personalized response based on user message
+4. **Email Node:** Sends automated reply to user's email address
+5. **Response Node:** Returns success status to landing page
 
-```javascript
-// Contact Form
-https://atheleia.app.n8n.cloud/webhook/contact-form
+### Workflow Logic
 
-// Chat Widget
-https://atheleia.app.n8n.cloud/webhook/chat
+```
+Form Submission → Webhook → Data Processing → AI Generation → Email Delivery → Confirmation
 ```
 
-### Setup Instructions
+### AI Response Template
 
-📚 **Detailed guide**: [docs/N8N_INTEGRATION.md](docs/N8N_INTEGRATION.md)
+The AI agent is configured to:
+- Acknowledge the specific inquiry topic
+- Thank the user professionally
+- Provide expected follow-up timeline
+- Maintain consistent brand voice
+- Include relevant next steps
 
-**Quick setup:**
+**Sample Response Structure:**
+- Greeting with user's name
+- Acknowledgment of their specific inquiry
+- Thank you message
+- Timeline for team follow-up (24-48 hours)
+- Contact information for urgent matters
+- Professional closing
 
-1. Import the workflows from `/n8n-workflows/`
-2. Activate the workflows in n8n
-3. Copy your webhook URLs
-4. Update URLs in the code:
-   - `index.html` line 185 (contact form)
-   - `script.js` line 352 (chat widget)
+### Workflow Configuration
 
----
-
-## 🎨 Customization
-
-### Quick Customization Guide
-
-#### 1. **Colors**
-Edit CSS custom properties in `style.css`:
-```css
-:root {
-    --bg-cream: #FEFAE0;
-    --bg-peach: #FEE0B9;
-    --text-black: #000000;
-    /* Customize these colors */
-}
-```
-
-#### 2. **Content**
-Edit text directly in `index.html`:
-- Company name: Search and replace "Atheleia"
-- Services: Lines 73-96
-- Testimonials: Lines 110-150
-- Contact info: Lines 270-300
-
-#### 3. **Images**
-Replace files in `/assets/`:
-- `avatar1.svg`, `avatar2.svg`, `avatar3.svg` - Client avatars
-- `logo1.svg` - `logo5.svg` - Company logos
-- `img1.svg` - `img3.svg` - Project screenshots
-
-#### 4. **Fonts**
-Change Google Fonts in `index.html` head:
-```html
-<link href="https://fonts.googleapis.com/css2?family=YourFont...">
-```
-
-📚 **Full guide**: [docs/CUSTOMIZATION.md](docs/CUSTOMIZATION.md)
-
----
-
-## 🌐 Deployment
-
-### Option 1: Static Hosting (Recommended)
-
-**Netlify, Vercel, or GitHub Pages**
-
-1. Connect your repository
-2. Configure build settings: `None` (static site)
-3. Set publish directory: `/` (root)
-4. Deploy!
-
-### Option 2: Traditional Web Hosting
-
-1. Upload all files via FTP/SFTP
-2. Ensure `index.html` is in the root
-3. Configure your domain DNS
-4. Enable HTTPS (recommended)
-
-### Option 3: CDN Deployment
-
-Use Cloudflare Pages, AWS S3 + CloudFront, or similar.
-
-📚 **Full guide**: [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)
+Detailed workflow setup is documented in:
+- [N8N_INTEGRATION.md](docs/N8N_INTEGRATION.md) - Complete setup guide
+- [API_REFERENCE.md](docs/API_REFERENCE.md) - Webhook API documentation
 
 ---
 
 ## 📚 Documentation
 
+Comprehensive documentation is available in the `/docs` folder:
+
 | Document | Description |
 |----------|-------------|
-| [SETUP.md](docs/SETUP.md) | Detailed setup instructions |
-| [N8N_INTEGRATION.md](docs/N8N_INTEGRATION.md) | n8n webhook configuration |
-| [CUSTOMIZATION.md](docs/CUSTOMIZATION.md) | How to customize the site |
-| [DEPLOYMENT.md](docs/DEPLOYMENT.md) | Deployment options and guides |
+| [SETUP.md](docs/SETUP.md) | Detailed installation and setup |
+| [N8N_INTEGRATION.md](docs/N8N_INTEGRATION.md) | n8n workflow configuration guide |
 | [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) | Common issues and solutions |
-| [API_REFERENCE.md](docs/API_REFERENCE.md) | n8n webhook API documentation |
+| [API_REFERENCE.md](docs/API_REFERENCE.md) | Webhook API documentation |
 
 ---
 
-## 🤝 Contributing
+## 🎓 Learning Outcomes
 
-Contributions are welcome! Here's how you can help:
+Through this tryout task, I gained practical experience in:
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+- Designing professional marketing landing pages
+- Implementing form validation and error handling
+- Integrating frontend applications with backend workflows
+- Building automation workflows in n8n
+- Configuring AI agents for automated responses
+- Testing and debugging webhook integrations
+- Deploying web applications
 
-### Development Guidelines
+### Challenges & Solutions
 
-- Follow existing code style and formatting
-- Test on multiple browsers before submitting
-- Update documentation if needed
-- Keep commits atomic and well-described
+**Challenge 1: Form Validation**
+- Implemented real-time validation with clear error messages
+- Added input sanitization to prevent malicious submissions
+
+**Challenge 2: n8n Webhook Integration**
+- Researched n8n documentation for webhook configuration
+- Tested with various payload structures to ensure reliability
+
+**Challenge 3: AI Response Quality**
+- Experimented with different prompts for consistent tone
+- Validated responses for professionalism and relevance
 
 ---
 
-## 🐛 Known Issues
+## 📧 Contact
 
-- Chat widget may not work without n8n setup
-- Some animations may be slow on older devices
-- Mobile menu needs testing on various screen sizes
+**Marghareth Bueno**
 
-See [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) for solutions.
+Email: buenomarghareth@gmail.com
+
+Project Repository: [https://github.com/marghareth/atheleia.git](https://github.com/marghareth/atheleia.git)
 
 ---
 
@@ -295,29 +272,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 🙏 Acknowledgments
-
-- Design inspiration from modern glassmorphism trends
-- [n8n](https://n8n.io) for the powerful automation platform
-- Google Fonts for typography
-- The open-source community
-
----
-
-## 📧 Contact
-
-**Your Name/Company** - buenomarghareth@gmail.com
-
-Project Link: [https://github.com/yourusername/atheleia](https://github.com/yourusername/atheleia)
-
-Website: [https://atheleia.com](https://atheleia.com)
-
----
-
 <div align="center">
 
-Made with ❤️ by Marga
+**Submitted to:** Tidal Solutions
+**Task:** Internship Tryout Task (2026)
+**Submission Date:** [Insert Date]
 
-⭐ Star this repo if you found it helpful!
+Made with dedication by Marga
 
 </div>
