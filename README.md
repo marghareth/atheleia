@@ -289,18 +289,6 @@ See [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) for solutions.
 
 ---
 
-## 🗓️ Roadmap
-
-- [ ] Add dark mode toggle
-- [ ] Implement blog section
-- [ ] Add more animation options
-- [ ] Create WordPress theme version
-- [ ] Multi-language support
-- [ ] Analytics integration guide
-- [ ] A/B testing setup
-
----
-
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -318,7 +306,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact
 
-**Your Name/Company** - your@email.com
+**Your Name/Company** - buenomarghareth@gmail.com
 
 Project Link: [https://github.com/yourusername/atheleia](https://github.com/yourusername/atheleia)
 
@@ -328,7 +316,7 @@ Website: [https://atheleia.com](https://atheleia.com)
 
 <div align="center">
 
-Made with ❤️ by [Your Name]
+Made with ❤️ by Marga
 
 ⭐ Star this repo if you found it helpful!
 
