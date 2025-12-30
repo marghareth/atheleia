@@ -1907,3 +1907,109 @@ section {
         right: 16px;
     }
 }
+
+/* Newsletter Form Styling - Matching Primary Buttons */
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    color: white;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.newsletter-form input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.newsletter-form input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Newsletter Button - Matching btn-primary Style */
+.newsletter-form button {
+    background: var(--text-dark);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    font-family: 'Inter', sans-serif;
+}
+
+.newsletter-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    background: #000000;
+}
+
+.newsletter-form button:active {
+    transform: translateY(0);
+}
+
+.newsletter-form button:disabled {
+    cursor: not-allowed !important;
+    opacity: 0.7 !important;
+}
+
+/* Newsletter Notification Styling */
+.newsletter-notification {
+    margin-top: 12px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    animation: slideDown 0.3s ease;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.newsletter-notification.success {
+    background: rgba(76, 175, 80, 0.9);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.newsletter-notification.error {
+    background: rgba(244, 67, 54, 0.9);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.newsletter-notification .notification-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.newsletter-notification svg {
+    flex-shrink: 0;
+}
+
+/* Responsive Newsletter Form */
+@media (max-width: 768px) {
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .newsletter-form button {
+        width: 100%;
+    }
+}
