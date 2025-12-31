@@ -714,37 +714,90 @@ console.log('✨ All features loaded: Modals, Chat, Forms, Animations');
 // ===== NEWSLETTER SIGNUP FUNCTIONALITY =====
 
 // Function to handle Newsletter Signup
-async function joinNewsletter() {
+async function joinNewsletter(event) {
+    // Prevent form submission if called from a form
+    if (event) {
+        event.preventDefault();
+    }
+    
     // 1. GET THE CORRECT INPUT (Using the class name)
-    // We use .newsletter-input to specifically target the footer box
     const emailInput = document.querySelector('.newsletter-input');
-    const email = emailInput.value.trim(); // .trim() removes accidental spaces
+    const submitButton = document.querySelector('.newsletter-form button');
+    const email = emailInput.value.trim();
 
-    // Check if email is empty
+    // Validate email format
     if (!email) {
+        alert("Please enter an email address.");
+        return;
+    }
+    
+    if (!validateEmail(email)) {
         alert("Please enter a valid email address.");
         return;
     }
 
-    // (Optional) Save to memory for the Chat Widget to use later
-    localStorage.setItem('user_email', email);
+    // Show loading state
+    const originalButtonText = submitButton.textContent;
+    submitButton.disabled = true;
+    submitButton.textContent = 'Subscribing...';
+    submitButton.style.opacity = '0.7';
 
     // 2. Send the email to n8n
     try {
         const response = await fetch('https://atheleia.app.n8n.cloud/webhook/newsletter', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: email })
+            headers: { 
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ 
+                email: email,
+                timestamp: new Date().toISOString()
+            })
         });
 
         if (response.ok) {
-            alert("Thanks for subscribing! Check your inbox.");
-            emailInput.value = ""; // Clear the box
+            alert("Thanks for subscribing! Check your inbox for confirmation.");
+            emailInput.value = ""; // Clear the input
+            submitButton.textContent = '✓ Subscribed!';
+            submitButton.style.background = '#4CAF50';
+            
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                submitButton.textContent = originalButtonText;
+                submitButton.style.background = '';
+                submitButton.disabled = false;
+                submitButton.style.opacity = '1';
+            }, 3000);
         } else {
-            alert("Something went wrong. Please try again.");
+            throw new Error('Failed to subscribe');
         }
+        
     } catch (error) {
-        console.error("Error:", error);
-        alert("Error connecting to server.");
+        console.error("Newsletter Error:", error);
+        alert("Something went wrong. Please try again or contact us directly.");
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+        submitButton.style.opacity = '1';
     }
 }
+
+// Add event listener to newsletter form
+document.addEventListener('DOMContentLoaded', function() {
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+        // Handle form submission
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            joinNewsletter(e);
+        });
+        
+        // Also handle button click directly
+        const newsletterButton = newsletterForm.querySelector('button');
+        if (newsletterButton) {
+            newsletterButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                joinNewsletter(e);
+            });
+        }
+    }
+});

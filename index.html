@@ -26,7 +26,6 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="nav-container">
             <button class="hamburger" id="mobileMenuToggle" aria-label="Toggle menu">☰</button>
             <div class="logo">Atheleia</div>
             <ul class="nav-links" id="navLinks">
@@ -245,10 +244,10 @@
                 <div class="newsletter">
                     <h3>Join our newsletter</h3>
                     <p>Sign up to our mailing list below and be the first to know about new updates. Don't worry, we hate spam too.</p>
-                    <div class="newsletter-form">
-                        <input type="email" placeholder="email@example.com" class="newsletter-input">
-                        <button onclick="joinNewsletter()">Get Notified</button>
-                    </div>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="email@example.com" class="newsletter-input" required>
+                        <button type="submit">Get Notified</button>
+                    </form>
                 </div>
             </div>
             <div class="footer-links">
