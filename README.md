@@ -7,7 +7,7 @@
 
 **Tryout Task Submission | Tidal Solutions 2026**
 
-[View Live Demo](atheleia-landing-page.netlify.app) • [Watch Demo Video](YOUR_VIDEO_URL)
+[View Live Demo](https://atheleia-landing-page.netlify.app/)
 
 </div>
 
@@ -183,12 +183,6 @@ Subscription → Webhook → Validation → Email Confirmation → Database Stor
 **Marghareth Bueno**  
 Email: buenomarghareth@gmail.com  
 GitHub: [@marghareth](https://github.com/marghareth/atheleia.git)
-
----
-
-## 📄 License
-
-This project is part of an internship application. All rights reserved.
 
 ---
 
