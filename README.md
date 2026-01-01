@@ -171,11 +171,6 @@ Subscription → Webhook → Validation → Email Confirmation → Database Stor
 - Created demo chat responses for testing without active webhooks
 - Ensured mobile responsiveness across all components
 
-**Key Decisions:**
-- Used vanilla JavaScript for lightweight, fast performance
-- Chose Gemini over OpenAI for cost-free AI integration
-- Implemented modular workflow design for easy maintenance
-
 ---
 
 ## 📧 Contact
